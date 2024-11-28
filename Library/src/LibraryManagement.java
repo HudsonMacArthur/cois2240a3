@@ -52,14 +52,21 @@ public class LibraryManagement {
                     String title = scanner.next();
                     
                     scanner.nextLine();
-
-                    Book newBook = new Book(id, title);
                     
-                    // attempt to add the member, print success confirmation
-                    if (library.addBook(newBook))
-                    	System.out.println("Book added to library successfully.");
-                    else
-                    	System.out.println("Book could not be added.");
+                    try
+                    {
+	                    Book newBook = new Book(id, title);
+	                    
+	                    // attempt to add the member, print success confirmation
+	                    if (library.addBook(newBook))
+	                    	System.out.println("Book added to library successfully.");
+	                    else
+	                    	System.out.println("Book could not be added.");
+                    }
+                    catch (Exception e)
+                    {
+                    	System.out.println(e.getMessage());
+                    }
                     
                     break;
                 case 3:

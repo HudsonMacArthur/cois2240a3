@@ -3,10 +3,10 @@ import java.util.Date;
 
 public class Transaction {
 	
-	private Transaction instance;
+	static private Transaction instance;
 	
 	// Return a reference to the singleton instance
-	public Transaction getInstance()
+	static public Transaction getInstance()
 	{
 		// create an instance if one does not yet exist
 		if (instance == null)

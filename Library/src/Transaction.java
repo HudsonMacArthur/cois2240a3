@@ -1,5 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -16,6 +18,36 @@ public class Transaction {
 		
 		// return the new or existing instance
 		return instance;
+	}
+	
+	// Read and print all transactions from file
+	public void displayTransactionHistory()
+	{
+		try
+		{
+			BufferedReader reader = new BufferedReader( new FileReader("transactions.txt"));
+			
+			// read the first line
+			String nextLine = reader.readLine();
+			
+			System.out.println("Transaction History:");
+			
+			// print all lines
+			while (nextLine != null)
+			{
+				// print a line
+				System.out.println("\t" + nextLine);
+				
+				// read the next line
+				nextLine = reader.readLine();
+			}
+			
+			reader.close();
+		}
+		catch (IOException e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 
     // Perform the borrowing of a book

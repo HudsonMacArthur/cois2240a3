@@ -7,7 +7,7 @@ public class Book {
     	
     	// validate id and throw exception if invalid
     	if (!isValidId(id))
-    		throw new Exception("This book ID is invalid.");
+    		throw new Exception("The book ID " + id + " is invalid.");
     	
         this.id = id;
         this.title = title;

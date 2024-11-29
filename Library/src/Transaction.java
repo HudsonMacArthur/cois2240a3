@@ -7,6 +7,10 @@ import java.io.IOException;
 
 public class Transaction {
 	
+	// private constructor
+	private Transaction() {}
+	
+	// the singleton instance
 	static private Transaction instance;
 	
 	// Return a reference to the singleton instance

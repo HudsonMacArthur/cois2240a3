@@ -1,12 +1,12 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
+import java.lang.reflect.Constructor;
 
 public class LibraryManagementTest {
 
 	@Test
-	public void testBookId() throws Exception {
-		
+	public void testBookId() throws Exception
+	{
 		// test valid ids
 		assertTrue(tryBookId(100));
 		assertTrue(tryBookId(999));
@@ -42,6 +42,14 @@ public class LibraryManagementTest {
 		assertTrue(transaction.returnBook(book, member));
 		// check that repeated returning fails
 		assertFalse(transaction.returnBook(book, member));
+	}
+	
+	@Test
+	public void testSingletonTransaction() throws Exception
+	{
+		Constructor<Transaction> constructor = Transaction.class.getDeclaredConstructor();
+		
+		assertTrue(constructor.getModifiers() == 2);
 	}
 	
 	// tests if a given book id throws an exception

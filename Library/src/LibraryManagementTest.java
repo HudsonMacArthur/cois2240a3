@@ -29,16 +29,19 @@ public class LibraryManagementTest {
 		
 		// check that book starts as available
 		assertTrue(book.isAvailable());
-
-		// borrow the book as the member
-		book.borrowBook();
-		member.borrowBook(book);
 		
-		// check that the member has the book
-		assertTrue(member.getBorrowedBooks().contains(book));
-		
+		// check borrowing succeeds
+		assertTrue(transaction.borrowBook(book, member));
 		// check that book is no longer available
 		assertFalse(book.isAvailable());
+		
+		// check that repeated borrowing fails
+		assertFalse(transaction.borrowBook(book, member));
+		
+		// check that returning succeeds
+		assertTrue(transaction.returnBook(book, member));
+		// check that repeated returning fails
+		assertFalse(transaction.returnBook(book, member));
 	}
 	
 	// tests if a given book id throws an exception
